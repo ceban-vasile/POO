@@ -7,9 +7,4 @@ public class User {
         this.firstName = fistName;
         this.lastName = lastName;
     }
-
-    public static void main(String[] args){
-        User user = new User("Ion","Doe");
-        System.out.println(user.firstName);
-    }
 }
