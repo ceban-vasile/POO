@@ -4,20 +4,24 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
+import static Laboratory_work_1.Student.enrollstud;
 
-public class Faculty extends Student{
+
+public class Faculty{
     String name;
     String abbreviation;
     public Faculty(){}
 
-    public Faculty(String firstName, String lastName, String email, Date dateOfBirth, String abbreviation) {
-        super(firstName, lastName, email, dateOfBirth);
+    public Faculty(String abbreviation) {
         this.abbreviation = abbreviation;
     }
-
+    public Faculty(String name, String abbreviation){
+        this.name = name;
+        this.abbreviation = abbreviation;
+    }
+    private Student student;
     public String getName() {
         return name;
     }
@@ -33,129 +37,88 @@ public class Faculty extends Student{
     public void setAbbreviation(String abbreviation) {
         this.abbreviation = abbreviation;
     }
+    public Student getStudent() {
+        return student;
+    }
 
-    static List<Faculty> enrollstud = new ArrayList<>();
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     enum StudyField {
         MECHANICAL_ENGINEERING, SOFTWARE_ENGINEERING, FOOD_TECHNOLOGY, URBANISM_ARCHITECTURE, VETERINARY_MEDICINE
     }
-    public static void createStudent() throws ParseException {
+    static ArrayList<Faculty> faculty = new ArrayList<>();
+
+    public static void createFaculty(){
         Scanner myScanner = new Scanner(System.in);
 
-        Faculty createStudent = new Faculty();
+        Faculty createFaculty = new Faculty();
+
+        System.out.print("Faculty name>");
+        createFaculty.setName(myScanner.next());
 
         System.out.print("Faculty abbreviation>");
-        createStudent.setAbbreviation(myScanner.next());
+        createFaculty.setAbbreviation(myScanner.next());
 
-        System.out.print("First Name>");
-        createStudent.setFirstName(myScanner.next());
-
-        System.out.print("Last Name>");
-        createStudent.setLastName(myScanner.next());
-
-        System.out.print("Email>");
-        createStudent.setEmail(myScanner.next());
-
-        System.out.println("Birthday>");
-        String strDate = myScanner.next();
-        Date birthday = new SimpleDateFormat("dd/MM/yyyy").parse(strDate);
-        createStudent.setDateOfBirth(birthday);
-
-        Student student = new Student();
-        student.setFaculty(createStudent);
-        enrollstud.add(createStudent);
-
+        faculty.add(createFaculty);
     }
-    public static void graduateStudent(String Email) {
-        for (int i = 0; i < enrollstud.size(); i++) {
-            Student stud = enrollstud.get(i);
-            if (stud.email.equals(Email)) {
-                stud.setEmail(null);//graduated.add(enrollstud.get(i));
-                //enrollstud.remove(i);
-                System.out.println("Student with email " + Email + " has graduated.");
-                return;
-            }
-        }
-        System.out.println("Student with email " + Email + " not found.");
-    }
-    public static void displayEnrollStud(String abbr){
-        for(Faculty stud: enrollstud){
-            if(stud.abbreviation.equals(abbr) && stud.email != null){
-                System.out.println(stud);
-            }
-        }
-    }
-    public static void displayGradStud(String abbr){
-        for(Faculty stud: enrollstud){
-            if(stud.abbreviation.equals(abbr) && stud.email == null){
-                System.out.println(stud);
-            }
-        }
-    }
-    public static void isStudentFaculty(String abbr, String Email){
-        for(Faculty stud: enrollstud){
-            if(stud.abbreviation.equals(abbr) && stud.email.equals(Email)){
-                System.out.println("This student belong to Faculty "+ stud.abbreviation);
-            }
-            else{
-                System.out.println("This student doesn't belong to Faculty "+ stud.abbreviation);
-            }
-        }
-    }
-    public static void facultyOperations() throws ParseException {
-        System.out.println("""
-                Faculty operations
-                What do you want to do?
-                
-                ns/<faculty abbreviation>/<firstName>/<LastName>/<email>/<day>/<month>/<year> - create student
-                gs/<email> - (g)raduate (s)tudent
-                ds/<faculty abbreviation> - (d)isplay enrolled (s)tudents
-                dg/<faculty abbreviation> - (d)isplay (g)raduated students
-                bf/<faculty abbreviation>/<email> - check if student (b)elongs to (f)aculty
-                
-                b - Back""");
+    public static void searchStudent(){
         Scanner myScanner = new Scanner(System.in);
-        String Email, abbr;
+        System.out.print("Email>");
+        String Email = myScanner.next();
+        for(Student stud: enrollstud){
+            if(stud.email.equals(Email)){
+                for(Faculty faf: faculty){
+                    if(stud.abbreviation.equals(faf.abbreviation)){
+                        System.out.println("Faculty name: "+faf.name+", "+"Abbreviation: "+faf.abbreviation);
+                    }
+                }
+            }
+        }
+    }
+    public static void displayFaculty(){
+        for(Faculty f: faculty){
+            System.out.println(f);
+        }
+    }
+    public static void generalOperations() throws ParseException {
+        System.out.println("""
+                General operations
+                What do you want to do?
+
+                nf/<faculty name>/<faculty abbreviation>/<field> - create faculty
+                ss/<student email> - search student and show faculty
+                df - display faculties
+                df/<field> - display all faculties of a field
+
+                b - Back""");
+
+        Scanner myScanner = new Scanner(System.in);
         while(true){
-            System.out.print("your input>");
-            String choice = myScanner.next();
+            String choice = myScanner.nextLine();
             switch(choice){
-                case "ns":
-                    createStudent();
+                case "nf/":
+                    createFaculty();
                     break;
-                case "gs":
-                    System.out.print("Email>");
-                    Email = myScanner.next();
-                    graduateStudent(Email);
+                case "ss/":
+                    searchStudent();
                     break;
-                case "ds":
-                    System.out.print("Faculty abbreviation> ");
-                    abbr = myScanner.next();
-                    displayEnrollStud(abbr);
+                case "df":
+                    displayFaculty();
                     break;
-                case "dg":
-                    System.out.print("Faculty abbreviation> ");
-                    abbr = myScanner.next();
-                    displayGradStud(abbr);
+                case "df/":
                     break;
-                case "bf":
-                    System.out.print("Faculty abbreviation> ");
-                    abbr = myScanner.next();
-                    System.out.print("Email> ");
-                    Email = myScanner.next();
-                    break;
-                case "b":
+                case "q":
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("You did not enter the correct data!!!");
             }
-            if(choice.equals("b")) {
-                break;
-            }
         }
-        Main.tumMenu();
     }
     @Override
-    public String toString() {
-        return "Faculty: "+abbreviation+", "+"First Name: "+firstName+", "+"Last Name: "+lastName+", "+"Email: "+email+", "+"Birthday: "+dateOfBirth;
+    public String toString(){
+        return "Faculty name: "+name+", "+"Abbreviation: "+abbreviation;
     }
 }
