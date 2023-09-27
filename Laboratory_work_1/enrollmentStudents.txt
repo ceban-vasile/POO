@@ -1,0 +1,9 @@
+finfo,doe,John,john.doe@example.com,NO,15/03/2000,15/03/2023
+feaa,smith,Jane,jane.smith@example.com,YES,25/08/2002,25/08/2025
+fcs,alex,Alex,alex@example.com,YES,10/12/1999,10/12/2022
+fcim2,james,James,james@example.com,YES,03/05/2001,03/05/2024
+finfo,emily,Emily,emily@example.com,NO,20/09/1998,20/09/2022
+fie,kate,Kate,kate@example.com,YES,08/11/2000,08/11/2023
+fia,bob,Bob,bob@example.com,YES,12/07/2002,12/07/2025
+fcs2,susan,Susan,susan@example.com,NO,05/04/2001,05/04/2024
+fie,william,William,william@example.com,YES,30/06/1999,30/06/2023
