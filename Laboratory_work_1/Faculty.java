@@ -3,7 +3,7 @@ package Laboratory_work_1;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static Laboratory_work_1.Student.enrollstud;
+import static Laboratory_work_1.Student.enrollstudent;
 
 
 public class Faculty{
@@ -15,9 +15,9 @@ public class Faculty{
         this.abbreviation = abbreviation;
     }
     static ArrayList<Faculty> faculty = new ArrayList<>();
+    static Scanner inputScanner = new Scanner(System.in);
 
     public static void createFaculty(){
-        Scanner inputScanner = new Scanner(System.in);
 
         System.out.print("Faculty name>");
         String faf = inputScanner.next();
@@ -25,18 +25,14 @@ public class Faculty{
         System.out.print("Faculty abbreviation>");
         String abbr = inputScanner.next();
 
-        inputScanner.close();
-
         Faculty createFaculty = new Faculty(faf, abbr);
 
         faculty.add(createFaculty);
     }
     public static void identifyFaculty(){
-        Scanner inputScanner = new Scanner(System.in);
         System.out.print("Email>");
         String Email = inputScanner.next();
-        inputScanner.close();
-        for(Student stud: enrollstud){
+        for(Student stud: enrollstudent){
             if(stud.email.equals(Email)){
                 for(Faculty faf: faculty){
                     if(stud.abbreviation.equals(faf.abbreviation)){
@@ -48,11 +44,11 @@ public class Faculty{
     }
     public static void Faculties(){
         for(Faculty f: faculty){
-            System.out.println(f);
+            System.out.println("Faculty name: "+f.name+", "+"Abbreviation: "+f.abbreviation);
         }
     }
     @Override
     public String toString(){
-        return "Faculty name: "+name+", "+"Abbreviation: "+abbreviation;
+        return name+" "+abbreviation;
     }
 }

@@ -3,11 +3,14 @@ package Laboratory_work_1;
 import java.text.ParseException;
 import java.util.Scanner;
 
+import static Laboratory_work_1.FileManager.readStudent;
 import static Laboratory_work_1.Student.*;
 
 public class OperationStudent {
     public static void menuStudentFaculty() throws ParseException {
         // move to faculty
+        enrollstudent.clear();
+        readStudent();
         System.out.println("""
                 Faculty operations
                 What do you want to do?
@@ -19,10 +22,9 @@ public class OperationStudent {
                 bf/<faculty abbreviation>/<email> - check if student (b)elongs to (f)aculty
                 
                 b - Back""");
-
+        var inputScanner = new Scanner(System.in);
         String choice = "";
         while(!"q".equals(choice)){
-            var inputScanner = new Scanner(System.in);
             System.out.print("your input>");
             choice = inputScanner.next();
             switch (choice) {
@@ -34,7 +36,6 @@ public class OperationStudent {
                 case "b" -> {}
                 default -> System.out.println("You did not enter the correct data!!!");
             }
-            inputScanner.close();
             if(choice.equals("b")) {
                 break;
             }

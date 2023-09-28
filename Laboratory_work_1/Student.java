@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import static Laboratory_work_1.FileManager.writerStudent;
+
 public class Student extends Faculty{
     String firstName;
     String lastName;
@@ -22,11 +24,9 @@ public class Student extends Faculty{
         this.dateOfBirth = dateOfBirth;
         this.enrollmentDate = enrollmentDate;
     }
-    static ArrayList<Student> enrollstud = new ArrayList<>();
-
+    static ArrayList<Student> enrollstudent = new ArrayList<>();
+    static Scanner inputScanner = new Scanner(System.in);
     public static void facultyStudent() throws ParseException {
-        // TODO use constrcutors
-        Scanner inputScanner = new Scanner(System.in);
 
         System.out.print("Faculty abbreviation>");
         String abbr = inputScanner.next();
@@ -51,18 +51,16 @@ public class Student extends Faculty{
         strDate = inputScanner.next();
         Date enrollD = new SimpleDateFormat("dd/MM/yyyy").parse(strDate);
 
-        inputScanner.close();
 
         Student createStudent = new Student(abbr, fName, lName, Email, enrol, birthday, enrollD);
-        enrollstud.add(createStudent);
+        writerStudent(createStudent);
+        enrollstudent.add(createStudent);
 
     }
     public static void isGraduated() {
-        Scanner inputScanner = new Scanner(System.in);
         System.out.print("Email>");
         String Email = inputScanner.next();
-        inputScanner.close();
-        for (Student stud: enrollstud) {
+        for (Student stud: enrollstudent) {
             if (stud.email.equals(Email)) {
                 if(stud.enroll.equals("YES")) stud.enroll = "NO";
                 else System.out.println("Student with email "+ Email +" is already graduated.");
@@ -72,14 +70,11 @@ public class Student extends Faculty{
         System.out.println("Student with email " + Email + " not found.");
     }
     public static void enrollStudentFaculty(){
-        // TODO move functionality to Faclulty class
-        Scanner inputScanner = new Scanner(System.in);
         System.out.print("Faculty abbreviation>");
         String abbr = inputScanner.next();
-        inputScanner.close();
-        for(Student stud: enrollstud){
-            if(stud.abbreviation.equals(abbr)){
-                if(stud.enroll.equals("YES")) System.out.println(stud);
+        for(Student stud: enrollstudent){
+            if(stud.abbreviation.equals(abbr) && stud.enroll.equals("YES")){
+                System.out.println("Faculty: "+stud.abbreviation+", "+"First Name: "+stud.firstName+", "+"Last Name: "+stud.lastName+", "+"Email: "+stud.email+", "+"Enrollment: "+stud.enroll+", "+"Birthday: "+stud.dateOfBirth+", "+"Enrollment Date: "+stud.enrollmentDate);
             }
         }
     }
@@ -87,19 +82,18 @@ public class Student extends Faculty{
         Scanner myScanner = new Scanner(System.in);
         System.out.print("Faculty abbreviation>");
         String abbr = myScanner.next();
-        for(Student stud: enrollstud){
-            if(stud.abbreviation.equals(abbr)){
-                if(stud.enroll.equals("NO")) System.out.println(stud);
+        for(Student stud: enrollstudent){
+            if(stud.abbreviation.equals(abbr) && stud.enroll.equals("NO")){
+                System.out.println("Faculty: "+stud.abbreviation+", "+"First Name: "+stud.firstName+", "+"Last Name: "+stud.lastName+", "+"Email: "+stud.email+", "+"Enrollment: "+stud.enroll+", "+"Birthday: "+stud.dateOfBirth+", "+"Enrollment Date: "+stud.enrollmentDate);
             }
         }
     }
     public static void isStudentFaculty(){
-        Scanner myScanner = new Scanner(System.in);
         System.out.print("Faculty abbreviation>");
-        String abbr = myScanner.next();
+        String abbr = inputScanner.next();
         System.out.print("Email>");
-        String Email = myScanner.next();
-        for(Student stud: enrollstud){
+        String Email = inputScanner.next();
+        for(Student stud: enrollstudent){
             if(stud.abbreviation.equals(abbr) && stud.email.equals(Email) && stud.enroll.equals("YES")){
                 System.out.println("YES");
             }
@@ -110,6 +104,6 @@ public class Student extends Faculty{
     }
     @Override
     public String toString() {
-        return "Faculty: "+abbreviation+", "+"First Name: "+firstName+", "+"Last Name: "+lastName+", "+"Email: "+email+", "+"Enrollment: "+enroll+", "+"Birthday: "+dateOfBirth+", "+"Enrollment Date: "+enrollmentDate;
+        return "\n"+abbreviation+" "+firstName+" "+lastName+" "+email+" "+enroll+" "+dateOfBirth+" "+enrollmentDate;
     }
 }

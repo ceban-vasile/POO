@@ -4,10 +4,14 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 import static Laboratory_work_1.Faculty.*;
+import static Laboratory_work_1.FileManager.readStudent;
+import static Laboratory_work_1.Student.enrollstudent;
 
 public class OperationFaculty {
     public static void menuFacultyOperations() throws ParseException {
         // move to a different class
+        enrollstudent.clear();
+        readStudent();
         System.out.println("""
                 General operations
                 What do you want to do?
@@ -23,8 +27,6 @@ public class OperationFaculty {
         Scanner inputScanner = new Scanner(System.in);
         while(!"q".equals(choice)){
             System.out.print("your input>");
-            // be sure the mySCanner is closed
-            // TODO give more meaningful names
             choice = inputScanner.nextLine();
             switch (choice) {
                 case "nf/" -> createFaculty();
@@ -34,7 +36,6 @@ public class OperationFaculty {
                 case "q" -> {}
                 default -> System.out.println("You did not enter the correct data!!!");
             }
-            inputScanner.close();
             if(choice.equals("b")) {
                 break;
             }
