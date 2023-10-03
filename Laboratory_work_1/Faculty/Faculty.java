@@ -8,7 +8,6 @@ import static Laboratory_work_1.FileManagerOperations.FileManager.addNewFaculty;
 import static Laboratory_work_1.FileManagerOperations.FileManager.readFaculty;
 import static Laboratory_work_1.Student.Student.enrollstudent;
 
-
 public class Faculty{
     String name;
     public String abbreviation;
