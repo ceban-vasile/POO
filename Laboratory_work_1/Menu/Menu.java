@@ -1,10 +1,10 @@
-package Laboratory_work_1;
+package Laboratory_work_1.Menu;
 
 import java.text.ParseException;
 import java.util.Scanner;
 
-import static Laboratory_work_1.OperationFaculty.menuFacultyOperations;
-import static Laboratory_work_1.OperationStudent.menuStudentFaculty;
+import static Laboratory_work_1.Faculty.OperationFaculty.menuFacultyOperations;
+import static Laboratory_work_1.Student.OperationStudent.menuStudentFaculty;
 
 public class Menu {
     // different class application loop ex
@@ -32,7 +32,6 @@ public class Menu {
                 case "q" -> {}
                 default ->  System.out.println("You did not enter the correct data!!!");
             }
-            inputScanner.close();
         }
     }
 }
