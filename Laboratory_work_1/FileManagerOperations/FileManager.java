@@ -13,19 +13,20 @@ import static Laboratory_work_1.Student.Student.enrollstudent;
 import static Laboratory_work_1.Student.Student.grad;
 
 public class FileManager {
-    public static void writerNewStudent(Student student){
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\enrollmentStudents.txt", true))) {
+
+    public void writerNewStudent(Student student){
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\enrollmentStudents.txt", true))) {
             bufferedWriter.write(String.valueOf(student));
             bufferedWriter.newLine();
         } catch (IOException e) {}
     }
-    public static void writerGraduatedStudent(String graduated){
+    public void writerGraduatedStudent(String graduated){
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\graduated.txt", true))) {
             bufferedWriter.write(graduated);
             bufferedWriter.newLine();
         } catch (IOException e) {}
     }
-    public static void readStudent(){
+    public void readStudent(){
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\enrollmentStudents.txt"))) {
             String line = bufferedReader.readLine();
             while (line != null) {
@@ -41,7 +42,7 @@ public class FileManager {
             System.out.println("Error parsing date: " + e.getMessage());
         }
     }
-    public static void readGraduatedStudent(){
+    public void readGraduatedStudent(){
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\graduated.txt"))) {
             String line = bufferedReader.readLine();
             while (line != null) {
@@ -54,20 +55,20 @@ public class FileManager {
             System.out.println("IOException: " + e.getMessage());
         }
     }
-    private static Student getStudent(String line) throws ParseException {
+    private Student getStudent(String line) throws ParseException {
         String[] parts = line.split("/");
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
 
         return new Student(parts[0], parts[1], parts[2], parts[3], sdf.parse(parts[4]), sdf.parse(parts[5]));
     }
     //========================================================================================================
-    public static void addNewFaculty(Faculty faculty){
+    public void addNewFaculty(Faculty faculty){
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\faculty.txt", true))) {
             bufferedWriter.write(String.valueOf(faculty));
             bufferedWriter.newLine();
         } catch (IOException e) {}
     }
-    public static void readFaculty(){
+    public void readFaculty(){
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\faculty.txt"))) {
             String line = bufferedReader.readLine();
             while (line != null) {
@@ -83,7 +84,7 @@ public class FileManager {
             System.out.println("Error parsing date: " + e.getMessage());
         }
     }
-    private static Faculty getFaculty(String line) throws ParseException {
+    private Faculty getFaculty(String line) throws ParseException {
         String[] parts = line.split("/");
         return new Faculty(parts[0], parts[1], StudyField.valueOf(parts[2]));
     }

@@ -1,3 +1,0 @@
-finfo doe John john.doe@example.com NO 15/03/2000 15/03/2023
-feaa smith Jane jane.smith@example.com YES 25/08/2002 25/08/2025
-fcs alex Alex alex@example.com YES 10/12/1999 10/12/2022
