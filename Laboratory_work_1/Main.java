@@ -1,13 +1,12 @@
 package Laboratory_work_1;
 
-import java.text.ParseException;
+import Laboratory_work_1.Menu.Menu;
 
-import static Laboratory_work_1.FileManager.readStudent;
-import static Laboratory_work_1.Menu.tumMenu;
+import java.text.ParseException;
 
 public class Main {
     public static void main(String[] args) throws ParseException {
-        tumMenu();
-        readStudent();
+        Menu menu = new Menu();
+        System.out.println(menu);
     }
 }
