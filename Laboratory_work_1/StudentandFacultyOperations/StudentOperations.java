@@ -43,7 +43,7 @@ public class StudentOperations {
             }
         }
     }
-    public void facultyStudent(String[] parts) throws ParseException {
+    private void facultyStudent(String[] parts) throws ParseException {
         if(parts.length == 11) {
             String strDate = parts[5] + "/" + parts[6] + "/" + parts[7];
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -55,18 +55,20 @@ public class StudentOperations {
             fileManager.writerNewStudent(createStudent);
         }else System.out.println("You did not enter the correct data according the requirements to the menu.");
     }
-    public void isGraduated(String[] parts) {
+    private void isGraduated(String[] parts) {
         if(parts.length == 2) {
             enrollstudent.clear();
             fileManager.readStudent();
             for (Student stud : enrollstudent) {
                 if (stud.email.equals(parts[1])) {
                     fileManager.writerGraduatedStudent(stud.email);
+                    return;
                 }
             }
+            System.out.println("Can’t graduate student: " + parts[1] + " (student not present)");
         }else System.out.println("You did not enter the correct data according the requirements to the menu.");
     }
-    public void enrollStudentFaculty(String[] parts){
+    private void enrollStudentFaculty(String[] parts){
         if(parts.length == 2) {
             enrollstudent.clear();
             fileManager.readStudent();
@@ -75,12 +77,14 @@ public class StudentOperations {
             for (Student stud : enrollstudent) {
                 if (stud.abbreviation.equals(parts[1]) && !grad.contains(stud.email)) {
                     System.out.println("Faculty: " + stud.abbreviation + ", " + "First Name: " + stud.firstName + ", " + "Last Name: " + stud.lastName + ", " + "Email: " + stud.email + ", " + "Birthday: " + stud.dateOfBirth + ", " + "Enrollment Date: " + stud.enrollmentDate);
+                    return;
                 }
             }
+            System.out.println("No students found at the " + parts[1] + " faculty.");
         }else System.out.println("You did not enter the correct data according the requirements to the menu.");
     }
 
-    public void graduatedStudentFaculty(String[] parts){
+    private void graduatedStudentFaculty(String[] parts){
         if(parts.length == 2) {
             enrollstudent.clear();
             fileManager.readStudent();
@@ -89,11 +93,13 @@ public class StudentOperations {
             for (Student stud : enrollstudent) {
                 if (stud.abbreviation.equals(parts[1]) && grad.contains(stud.email)) {
                     System.out.println("Faculty: " + stud.abbreviation + ", " + "First Name: " + stud.firstName + ", " + "Last Name: " + stud.lastName + ", " + "Email: " + stud.email + ", " + "Birthday: " + stud.dateOfBirth + ", " + "Enrollment Date: " + stud.enrollmentDate);
+                    return;
                 }
             }
+            System.out.println("No graduate students were found at the " + parts[1] + " faculty.");
         }else System.out.println("You did not enter the correct data according the requirements to the menu.");
     }
-    public void isStudentFaculty(String[] parts){
+    private void isStudentFaculty(String[] parts){
         if(parts.length == 3) {
             enrollstudent.clear();
             fileManager.readStudent();

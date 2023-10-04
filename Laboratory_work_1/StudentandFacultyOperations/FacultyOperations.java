@@ -57,8 +57,10 @@ public class FacultyOperations {
                             System.out.println("Faculty name: " + faf.name + ", " + "Abbreviation: " + faf.abbreviation + ", " + "Study field: " + faf.field);
                         }
                     }
+                    return;
                 }
             }
+            System.out.println("Can’t find the student: " + parts[1] + " (student not present");
         }else System.out.println("You did not enter the correct data according the requirements to the menu.");
     }
     private void displayFaculties(){
@@ -66,17 +68,21 @@ public class FacultyOperations {
         fileManager.readFaculty();
         for(Faculty f: faculty){
             System.out.println("Faculty name: "+f.name+", "+"Abbreviation: "+f.abbreviation+", "+"Study Field: "+f.field);
+            return;
         }
+        System.out.println("No faculty in the file was added.");
     }
     private void allFacultiesField(String[] parts){
         if(parts.length == 2) {
             faculty.clear();
             fileManager.readFaculty();
             for (Faculty f : faculty) {
-                if (f.field.equals(StudyField.valueOf(parts[1]))) System.out.println("Faculty name: " + f.name + ", " + "Abbreviation: " + f.abbreviation + ", " + "Study Field: " + f.field);
-                else return;
+                if (f.field.equals(StudyField.valueOf(parts[1]))){
+                    System.out.println("Faculty name: " + f.name + ", " + "Abbreviation: " + f.abbreviation + ", " + "Study Field: " + f.field);
+                    return;
+                }
             }
+            System.out.println("Study Field " + StudyField.valueOf(parts[1]) + " is not found.");
         }else System.out.println("You did not enter the correct data according the requirements to the menu.");
-        System.out.println("Study Field " + StudyField.valueOf(parts[1]) + " is not found.");
     }
 }
