@@ -42,6 +42,7 @@ public class StudentOperations {
                 default -> System.out.println("You did not enter the correct data!!!");
             }
         }
+        inputScanner.close();
     }
     private void facultyStudent(String[] parts) throws ParseException {
         if(parts.length == 11) {
