@@ -42,8 +42,12 @@ public class FacultyOperations {
     }
     private void addFaculty(String[] parts){
         if(parts.length == 4){
-             Faculty createFaculty = new Faculty(parts[1], parts[2], StudyField.valueOf(parts[3]));
-             fileManager.addNewFaculty(createFaculty);
+            try {
+                Faculty createFaculty = new Faculty(parts[1], parts[2], StudyField.valueOf(parts[3]));
+                fileManager.addNewFaculty(createFaculty);
+            }catch(IllegalArgumentException e){
+                System.out.println("You have not entered the study field correctly!!!");
+            }
         }else System.out.println("You did not enter the correct data according the requirements to the menu.");
     }
     private void searchFaculty(String[] parts){
@@ -66,11 +70,11 @@ public class FacultyOperations {
     private void displayFaculties(){
         faculty.clear();
         fileManager.readFaculty();
-        for(Faculty f: faculty){
-            System.out.println("Faculty name: "+f.name+", "+"Abbreviation: "+f.abbreviation+", "+"Study Field: "+f.field);
-            return;
-        }
-        System.out.println("No faculty in the file was added.");
+        if(faculty.isEmpty()) {
+            for (Faculty f : faculty) {
+                System.out.println("Faculty name: " + f.name + ", " + "Abbreviation: " + f.abbreviation + ", " + "Study Field: " + f.field);
+            }
+        }else System.out.println("No faculty in the file was added.");
     }
     private void allFacultiesField(String[] parts){
         if(parts.length == 2) {
