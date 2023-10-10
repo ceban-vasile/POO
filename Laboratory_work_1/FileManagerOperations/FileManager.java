@@ -72,19 +72,17 @@ public class FileManager {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_1\\Files\\faculty.txt"))) {
             String line = bufferedReader.readLine();
             while (line != null) {
-                Faculty faf = getFaculty(line);
-                faculty.add(faf);
+                Faculty f = getFaculty(line);
+                faculty.add(f);
                 line = bufferedReader.readLine();
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("IOException: " + e.getMessage());
-        } catch (ParseException e) {
-            System.out.println("Error parsing date: " + e.getMessage());
         }
     }
-    private Faculty getFaculty(String line) throws ParseException {
+    private Faculty getFaculty(String line) {
         String[] parts = line.split("/");
         return new Faculty(parts[0], parts[1], StudyField.valueOf(parts[2]));
     }
