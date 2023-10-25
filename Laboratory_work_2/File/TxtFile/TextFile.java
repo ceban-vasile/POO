@@ -3,9 +3,9 @@ package Laboratory_work_2.File.TxtFile;
 import Laboratory_work_2.File.File;
 
 public class TextFile extends File {
-    int lineCount;
-    int wordCount;
-    int charCount;
+    public int lineCount;
+    public int wordCount;
+    public int charCount;
 
     @Override
     public void printInfo() {
