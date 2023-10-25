@@ -3,9 +3,9 @@ package Laboratory_work_2.File.ProgramFile;
 import Laboratory_work_2.File.File;
 
 public class ProgramFile extends File {
-    int lineCount;
-    int classCount;
-    int methodCount;
+    public int lineCount;
+    public int classCount;
+    public int methodCount;
     @Override
     public void printInfo() {
         System.out.println("File Name: " + fileName);
