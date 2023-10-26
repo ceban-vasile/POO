@@ -2,14 +2,7 @@ package Laboratory_work_2.ReadFiles;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
+import java.io.*;
 import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +10,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class OperationFile {
+    public void writeModification(File[] files){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("file_info.txt"))) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    String fileName = file.getName();
+                    FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
+                    writer.write(fileName + "/" + lastModifiedTime + "\n");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public List<Integer> readTxtFile(String path){
         int wordCount = 0;
         int charCount = 0;
