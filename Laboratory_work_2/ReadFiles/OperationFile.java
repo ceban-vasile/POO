@@ -111,11 +111,4 @@ public class OperationFile {
         }
         return countInfo;
     }
-    public static boolean endsWithWord(String line) {
-        return !line.isEmpty() && Character.isLetterOrDigit(line.charAt(line.length() - 1));
-    }
-
-    public static boolean startsWithWord(String line) {
-        return !line.isEmpty() && (Character.isLetterOrDigit(line.charAt(0)));
-    }
 }
