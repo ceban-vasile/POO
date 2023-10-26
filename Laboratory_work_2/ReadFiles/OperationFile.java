@@ -44,12 +44,15 @@ public class OperationFile {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             String line;
-
+            Pattern classPattern = Pattern.compile("\\b(class|interface|enum)\\s+\\w+\\s*\\{");
+            Pattern methodPattern = Pattern.compile("\\b\\w+(?:<[^>]+>)?\\s+\\w+\\s*\\([^)]*\\)\\s*(?:throws\\s+\\w+(?:,\\s*\\w+)*)?\\s*\\{");
             while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if ((line.startsWith("public") || line.startsWith("private") || line.startsWith("abstract")) && line.contains(" class ")) {
+                Matcher classMatcher = classPattern.matcher(line);
+                Matcher methodMatcher = methodPattern.matcher(line);
+                if (classMatcher.find()) {
                     classCount++;
-                } else if ((line.startsWith("public") || line.startsWith("private") || line.startsWith("abstract") || line.startsWith("protected") || line.startsWith("static")) && line.contains("(") && line.endsWith(") {")) {
+                }
+                else if (methodMatcher.find()) {
                     methodCount++;
                 }
                 lineCount++;
@@ -63,7 +66,6 @@ public class OperationFile {
         countInfo.add(classCount);
         countInfo.add(methodCount);
         return countInfo;
-
     }
     public List<Integer> readPythonFile(String path) {
         int classCount = 0;
@@ -108,5 +110,12 @@ public class OperationFile {
             e.printStackTrace();
         }
         return countInfo;
+    }
+    public static boolean endsWithWord(String line) {
+        return !line.isEmpty() && Character.isLetterOrDigit(line.charAt(line.length() - 1));
+    }
+
+    public static boolean startsWithWord(String line) {
+        return !line.isEmpty() && (Character.isLetterOrDigit(line.charAt(0)));
     }
 }

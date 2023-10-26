@@ -76,7 +76,9 @@ public class FileMonitor extends File{
     }
 
     public void printInfo(){
-
+        System.out.println("1. commit -  Simply update the snapshot time to the current time.\n" +
+                           "2. info<filName> - - prints general information about the file.\n"
+                            );
     }
     private String findExtension(String fileName){
 
