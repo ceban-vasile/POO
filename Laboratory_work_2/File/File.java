@@ -7,7 +7,7 @@ public abstract class File {
     public String extension;
 
     public FileTime createTime;
-    public String updateTime;
+    public FileTime updateTime;
     public abstract void printInfo();
     public abstract void findCreateTime(String filePath);
 }

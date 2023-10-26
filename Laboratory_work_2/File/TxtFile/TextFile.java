@@ -27,10 +27,8 @@ public class TextFile extends File {
         try {
             Path file = Paths.get(filePath);
             BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
-
             createTime = attr.creationTime();
-            //attr.lastModifiedTime();
-
+            updateTime = attr.lastModifiedTime();
         } catch (IOException e) {
             e.printStackTrace();
         }
