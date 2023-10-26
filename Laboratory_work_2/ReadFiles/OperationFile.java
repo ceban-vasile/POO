@@ -4,7 +4,10 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.attribute.FileTime;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +20,18 @@ public class OperationFile {
             e.printStackTrace();
         }
     }
+    public FileTime readSnapshot() {
+        try (BufferedReader read = new BufferedReader(new FileReader("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_2\\File\\snapshot.txt"))) {
+            String line = read.readLine();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSX");
+            Date date = sdf.parse(line);
+            return FileTime.fromMillis(date.getTime());
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+            return null; // Handle error appropriately
+        }
+    }
+
     public List<Integer> readTxtFile(String path){
         int wordCount = 0;
         int charCount = 0;
