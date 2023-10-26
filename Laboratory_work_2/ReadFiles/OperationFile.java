@@ -10,15 +10,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class OperationFile {
-    public void writeModification(File[] files){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("file_info.txt"))) {
-            for (File file : files) {
-                if (file.isFile()) {
-                    String fileName = file.getName();
-                    FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
-                    writer.write(fileName + "/" + lastModifiedTime + "\n");
-                }
-            }
+    public void writeSnapshot(FileTime snapshot){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_2\\File\\snapshot.txt"))) {
+            writer.write(String.valueOf(snapshot));
         } catch (IOException e) {
             e.printStackTrace();
         }
