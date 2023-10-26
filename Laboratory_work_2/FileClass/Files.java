@@ -1,8 +1,8 @@
-package Laboratory_work_2.File;
+package Laboratory_work_2.FileClass;
 
 import java.nio.file.attribute.FileTime;
 
-public abstract class File {
+public abstract class Files {
     public String fileName;
     public String extension;
 
