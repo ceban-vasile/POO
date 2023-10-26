@@ -38,6 +38,7 @@ public class FileMonitor extends File{
                 txtFile.lineCount = countInfo.get(2);
                 txtFile.fileName = fileName;
                 txtFile.extension = extension;
+                txtFile.findCreateTime(repository + fileName);
                 txtFile.printInfo();
             }
             case "java" -> {
@@ -48,6 +49,7 @@ public class FileMonitor extends File{
                 programFile.methodCount = countInfo.get(2);
                 programFile.fileName = fileName;
                 programFile.extension = extension;
+                programFile.findCreateTime(repository + fileName);
                 programFile.printInfo();
             }
             case "py" -> {
@@ -58,6 +60,7 @@ public class FileMonitor extends File{
                 programFile.methodCount = countInfo.get(2);
                 programFile.fileName = fileName;
                 programFile.extension = extension;
+                programFile.findCreateTime(repository + fileName);
                 programFile.printInfo();
             }
             case "png", "jpg" -> {
@@ -67,6 +70,7 @@ public class FileMonitor extends File{
                 imageFile.extension = extension;
                 imageFile.width = countInfo.get(0);
                 imageFile.height = countInfo.get(1);
+                imageFile.findCreateTime(repository + fileName);
                 imageFile.printInfo();
             }
         }
@@ -77,9 +81,17 @@ public class FileMonitor extends File{
 
     public void printInfo(){
         System.out.println("1. commit -  Simply update the snapshot time to the current time.\n" +
-                           "2. info<filName> - - prints general information about the file.\n"
-                            );
+                           "2. info<filName> - prints general information about the file.\n" +
+                           "3. status - When calling status an iteration\n" +
+                "occurs through all the files stored in program memory and prints if they were\n" +
+                "changed during snapshot time and current time.");
     }
+
+    @Override
+    public void findCreateTime(String filePath) {
+
+    }
+
     private String findExtension(String fileName){
 
         return fileName.substring(fileName.lastIndexOf('.') + 1);
