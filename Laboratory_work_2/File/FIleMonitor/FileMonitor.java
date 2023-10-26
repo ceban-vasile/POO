@@ -40,9 +40,19 @@ public class FileMonitor extends File{
                 txtFile.extension = extension;
                 txtFile.printInfo();
             }
-            case "py", "java" -> {
+            case "java" -> {
                 countInfo.clear();
-                countInfo = file.readProgramFile(repository + fileName);
+                countInfo = file.readJavaFile(repository + fileName);
+                programFile.lineCount = countInfo.get(0);
+                programFile.classCount = countInfo.get(1);
+                programFile.methodCount = countInfo.get(2);
+                programFile.fileName = fileName;
+                programFile.extension = extension;
+                programFile.printInfo();
+            }
+            case "py" -> {
+                countInfo.clear();
+                countInfo = file.readPythonFile(repository + fileName);
                 programFile.lineCount = countInfo.get(0);
                 programFile.classCount = countInfo.get(1);
                 programFile.methodCount = countInfo.get(2);

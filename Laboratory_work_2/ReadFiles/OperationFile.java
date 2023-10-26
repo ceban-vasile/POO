@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OperationFile {
     public List<Integer> readTxtFile(String path){
@@ -34,7 +36,7 @@ public class OperationFile {
         countInfo.add(lineCount);
         return countInfo;
     }
-    public List<Integer> readProgramFile(String path){
+    public List<Integer> readJavaFile(String path) {
         int classCount = 0;
         int methodCount = 0;
         int lineCount = 0;
@@ -45,15 +47,38 @@ public class OperationFile {
 
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
-                boolean insideImport = false;
-
-                if (line.startsWith("import ") || line.startsWith("package ")) {
-                    insideImport = true;
-                } else if (insideImport && line.endsWith(";")) {
-                    insideImport = false;
-                } else if (!insideImport && (line.startsWith("public") || line.startsWith("private") || line.startsWith("abstract")) && line.contains(" class ")) {
+                if ((line.startsWith("public") || line.startsWith("private") || line.startsWith("abstract")) && line.contains(" class ")) {
                     classCount++;
-                } else if (!insideImport && (line.startsWith("public") || line.startsWith("private") || line.startsWith("abstract") || line.startsWith("protected") || line.startsWith("static")) && line.contains("(") && line.endsWith(") {")) {
+                } else if ((line.startsWith("public") || line.startsWith("private") || line.startsWith("abstract") || line.startsWith("protected") || line.startsWith("static")) && line.contains("(") && line.endsWith(") {")) {
+                    methodCount++;
+                }
+                lineCount++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        countInfo.add(lineCount);
+        countInfo.add(classCount);
+        countInfo.add(methodCount);
+        return countInfo;
+
+    }
+    public List<Integer> readPythonFile(String path) {
+        int classCount = 0;
+        int methodCount = 0;
+        int lineCount = 0;
+        List<Integer> countInfo = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.startsWith("class ")) {
+                    classCount++;
+                } else if (line.matches("\\s*def\\s+\\w+\\s*\\([^)]*\\):")) {
                     methodCount++;
                 }
                 lineCount++;
@@ -68,6 +93,7 @@ public class OperationFile {
         countInfo.add(methodCount);
         return countInfo;
     }
+
     public List<Integer> readImageFile(String path){
         List<Integer> countInfo = new ArrayList<>();
         try {
