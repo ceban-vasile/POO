@@ -1,19 +1,21 @@
-package Laboratory_work_2.File.FIleMonitor;
+package Laboratory_work_2.FileClass.FIleMonitor;
 
-import Laboratory_work_2.File.File;
-import Laboratory_work_2.File.ImgFile.ImageFile;
-import Laboratory_work_2.File.ProgramFile.ProgramFile;
-import Laboratory_work_2.File.TxtFile.TextFile;
+import Laboratory_work_2.FileClass.Files;
+import Laboratory_work_2.FileClass.ImgFile.ImageFile;
+import Laboratory_work_2.FileClass.ProgramFile.ProgramFile;
+import Laboratory_work_2.FileClass.TxtFile.TextFile;
 import Laboratory_work_2.ReadFiles.OperationFile;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.attribute.FileTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileMonitor extends File{
+public class FileMonitor extends Files {
     TextFile txtFile;
 
     {
@@ -23,7 +25,14 @@ public class FileMonitor extends File{
     OperationFile file = new OperationFile();
     ImageFile imageFile = new ImageFile();
     public void commit() {
-
+            String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
+            File folder = new File(repository);
+            if (folder.isDirectory()) {
+                File[] files = folder.listFiles();
+                file.writeModification(files);
+            } else {
+                System.out.println("Calea specificată nu este către un folder.");
+            }
     }
     public void info(String fileName) {
         String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
@@ -78,7 +87,6 @@ public class FileMonitor extends File{
     public void status() {
 
     }
-
     public void printInfo(){
         System.out.println("1. commit -  Simply update the snapshot time to the current time.\n" +
                            "2. info<filName> - prints general information about the file.\n" +
@@ -110,7 +118,9 @@ public class FileMonitor extends File{
                     info(fileName);
                 }
                 case "status" -> {status();}
-                default -> {System.out.println("Is not valid command!!!");}
+                case "help" -> {printInfo();}
+                default -> {System.out.println("Is not valid command!!! \n" +
+                        "For more information, write help in the console");}
             }
         }
         inputScanner.close();
