@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.attribute.FileTime;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,14 +26,8 @@ public class FileMonitor extends Files {
     OperationFile file = new OperationFile();
     ImageFile imageFile = new ImageFile();
     public void commit() {
-            String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
-            File folder = new File(repository);
-            if (folder.isDirectory()) {
-                File[] files = folder.listFiles();
-                file.writeModification(files);
-            } else {
-                System.out.println("Calea specificată nu este către un folder.");
-            }
+        FileTime currentFileTime = FileTime.from(Instant.now());
+        file.writeSnapshot(currentFileTime);
     }
     public void info(String fileName) {
         String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
@@ -85,16 +80,35 @@ public class FileMonitor extends Files {
         }
     }
     public void status() {
+        String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
+        File folder = new File(repository);
+        File[] files = folder.listFiles();
+        snapshot = file.readSnapshot();
+        printInfo();
+        for(File file: files){
+            String fileName = file.getName();
+            FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
+            int comparisonResult = lastModifiedTime.compareTo(snapshot);
+            if (comparisonResult > 0) {
+                System.out.println(fileName+" - Changed");
+            }else if(comparisonResult < 0){
+                System.out.println(fileName+" - No changed");
+            }
 
+
+        }
     }
+    @Override
     public void printInfo(){
+        System.out.println("Created Snapshot at: " + snapshot);
+    }
+    private void help(){
         System.out.println("1. commit -  Simply update the snapshot time to the current time.\n" +
                            "2. info<filName> - prints general information about the file.\n" +
                            "3. status - When calling status an iteration\n" +
                 "occurs through all the files stored in program memory and prints if they were\n" +
                 "changed during snapshot time and current time.");
     }
-
     @Override
     public void findCreateTime(String filePath) {
 
