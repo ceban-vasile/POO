@@ -22,14 +22,18 @@ public class FileMonitor extends Files {
     ImageFile imageFile = new ImageFile();
     public void commit() {
         FileTime currentFileTime = FileTime.from(Instant.now());
-        file.writeSnapshot(currentFileTime);
+
+        String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
+
+        file.writeSnapshotAndFilesName(currentFileTime, repository);
     }
     public void status() {
         String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
         File folder = new File(repository);
         File[] files = folder.listFiles();
         snapshot = file.readSnapshot();
-        infoStatus();
+        System.out.println("Created Snapshot at: " + snapshot);
+        //infoStatus();
         for(File file: files){
             String fileName = file.getName();
             FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
@@ -45,7 +49,6 @@ public class FileMonitor extends Files {
 
     }
     public void printInfo(String filename){
-       // System.out.println("Created Snapshot at: " + snapshot);
         extension = findExtension(filename);
         switch (extension){
             case "txt" -> {txtFile.printInfo(filename);}

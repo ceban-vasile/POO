@@ -13,9 +13,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class OperationFile {
-    public void writeSnapshot(FileTime snapshot){
+    public void writeSnapshotAndFilesName(FileTime snapshot, String pathRepository) {
+
+        File folder = new File(pathRepository);
+        File[] files = folder.listFiles();
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_2\\File\\snapshot.txt"))) {
-            writer.write(String.valueOf(snapshot));
+            writer.write(snapshot + "\n");
+            for(File file: files){
+                writer.write(file.getName() + "\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,7 +88,6 @@ public class OperationFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         countInfo.add(lineCount);
         countInfo.add(classCount);
         countInfo.add(methodCount);
