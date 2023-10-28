@@ -16,6 +16,8 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.awt.geom.Path2D.contains;
+
 public class FileMonitor extends Files {
     TextFile txtFile;
 
@@ -37,16 +39,23 @@ public class FileMonitor extends Files {
         File folder = new File(repository);
         File[] files = folder.listFiles();
         snapshot = file.readSnapshot();
+        List<String> prevFileName = file.processFilesList();
         System.out.println("Created snapshot at: " + snapshot);
-        //printInfo();
+
         for(File file: files){
-            String fileName = file.getName();
+            fileName = file.getName();
             FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
-            int comparisonResult = lastModifiedTime.compareTo(snapshot);
-            if (comparisonResult > 0) {
-                System.out.println(fileName+" - Changed");
-            }else if(comparisonResult < 0){
-                System.out.println(fileName+" - No changed");
+            getCreateTime(repository + fileName);
+
+            int comparisonResultMod = lastModifiedTime.compareTo(snapshot);
+            int comparisonResultAdd = createTime.compareTo(snapshot);
+
+            if (comparisonResultMod > 0 && comparisonResultAdd < 0) {
+                System.out.println(fileName + " - Changed");
+            }else if(comparisonResultMod < 0){
+                System.out.println(fileName + " - No changed");
+            }else if(comparisonResultAdd > 0){
+                System.out.println(fileName + " - Add new file");
             }
         }
     }
