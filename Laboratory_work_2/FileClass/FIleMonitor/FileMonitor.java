@@ -7,8 +7,13 @@ import Laboratory_work_2.FileClass.TxtFile.TextFile;
 import Laboratory_work_2.ReadFiles.OperationFile;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.time.Instant;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileMonitor extends Files {
@@ -32,15 +37,15 @@ public class FileMonitor extends Files {
         File folder = new File(repository);
         File[] files = folder.listFiles();
         snapshot = file.readSnapshot();
-        System.out.println("Created Snapshot at: " + snapshot);
-        //infoStatus();
+        System.out.println("Created snapshot at: " + snapshot);
+        //printInfo();
         for(File file: files){
             String fileName = file.getName();
             FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
-            int comparisonResultMod = lastModifiedTime.compareTo(snapshot);
-            if (comparisonResultMod > 0) {
+            int comparisonResult = lastModifiedTime.compareTo(snapshot);
+            if (comparisonResult > 0) {
                 System.out.println(fileName+" - Changed");
-            }else if(comparisonResultMod < 0){
+            }else if(comparisonResult < 0){
                 System.out.println(fileName+" - No changed");
             }
         }
@@ -64,8 +69,14 @@ public class FileMonitor extends Files {
                 "changed during snapshot time and current time.");
     }
     @Override
-    public void findCreateTime(String filePath) {
-
+    public void getCreateTime(String filePath) {
+        try {
+            Path file = Paths.get(filePath);
+            BasicFileAttributes attr = java.nio.file.Files.readAttributes(file, BasicFileAttributes.class);
+            createTime = attr.creationTime();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private String findExtension(String fileName){
 
