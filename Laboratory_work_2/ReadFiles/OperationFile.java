@@ -4,10 +4,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.attribute.FileTime;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,13 +29,29 @@ public class OperationFile {
     public FileTime readSnapshot() {
         try (BufferedReader read = new BufferedReader(new FileReader("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_2\\File\\snapshot.txt"))) {
             String line = read.readLine();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSX");
-            Date date = sdf.parse(line);
-            return FileTime.fromMillis(date.getTime());
-        } catch (IOException | ParseException e) {
+                DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+                Instant instant = Instant.from(formatter.parse(line));
+
+            return FileTime.from(instant);
+        } catch (IOException e) {
             e.printStackTrace();
             return null; // Handle error appropriately
         }
+    }
+
+    public List<String> processFilesList() {
+        List<String> listFileName = new ArrayList<>();
+        try (BufferedReader read = new BufferedReader(new FileReader("C:\\Users\\Vasile\\IdeaProjects\\POO\\Laboratory_work_2\\File\\snapshot.txt"))) {
+            read.readLine();
+
+            String line;
+            while ((line = read.readLine()) != null) {
+                listFileName.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listFileName;
     }
 
     public List<Integer> readTxtFile(String path){
