@@ -42,6 +42,11 @@ public class FileMonitor extends Files {
         List<String> prevFileName = file.processFilesList();
         System.out.println("Created snapshot at: " + snapshot);
 
+        for(String f: prevFileName){
+            folder = new File(repository + f);
+            if(!folder.exists())System.out.println(f + " - Delete");
+        }
+
         for(File file: files){
             fileName = file.getName();
             FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
