@@ -1,4 +1,4 @@
-package Laboratory_work_2.FileClass.FIleMonitor;
+package Laboratory_work_2.FileClass.Monitor;
 
 import Laboratory_work_2.FileClass.Files;
 import Laboratory_work_2.FileClass.ImgFile.ImageFile;
@@ -15,8 +15,6 @@ import java.nio.file.attribute.FileTime;
 import java.time.Instant;
 import java.util.List;
 import java.util.Scanner;
-
-import static java.awt.geom.Path2D.contains;
 
 public class FileMonitor extends Files {
     TextFile txtFile;
@@ -42,11 +40,6 @@ public class FileMonitor extends Files {
         List<String> prevFileName = file.processFilesList();
         System.out.println("Created snapshot at: " + snapshot);
 
-        for(String f: prevFileName){
-            folder = new File(repository + f);
-            if(!folder.exists())System.out.println(f + " - Delete");
-        }
-
         for(File file: files){
             fileName = file.getName();
             FileTime lastModifiedTime = FileTime.fromMillis(file.lastModified());
@@ -60,8 +53,13 @@ public class FileMonitor extends Files {
             }else if(comparisonResultMod < 0){
                 System.out.println(fileName + " - No changed");
             }else if(comparisonResultAdd > 0){
-                System.out.println(fileName + " - Add new file");
+                System.out.println(fileName + " - new file");
             }
+        }
+
+        for(String f: prevFileName){
+            folder = new File(repository + f);
+            if(!folder.exists())System.out.println(f + " - Delete");
         }
     }
     public void infoStatus(){
@@ -118,5 +116,4 @@ public class FileMonitor extends Files {
         }
         inputScanner.close();
     }
-
 }

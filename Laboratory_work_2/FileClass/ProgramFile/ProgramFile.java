@@ -29,7 +29,7 @@ public class ProgramFile extends Files {
         lineCount = countInfo.get(0);
         classCount = countInfo.get(1);
         methodCount = countInfo.get(2);
-        findCreateTime(repository + fileName);
+        getCreateTime(repository + fileName);
 
         System.out.println("File Name: " + fileName);
         System.out.println("Extension: " + extension);
@@ -40,7 +40,7 @@ public class ProgramFile extends Files {
     }
 
     @Override
-    public void findCreateTime(String filePath) {
+    public void getCreateTime(String filePath) {
         try {
             Path file = Paths.get(filePath);
             BasicFileAttributes attr = java.nio.file.Files.readAttributes(file, BasicFileAttributes.class);

@@ -22,7 +22,7 @@ public class ImageFile extends Files {
         height = countInfo.get(1);
         fileName = filename;
         extension = findExtension(repository + fileName);
-        findCreateTime(repository + fileName);
+        getCreateTime(repository + fileName);
 
         System.out.println("File Name: " + fileName);
         System.out.println("Extension: " + extension);
@@ -31,7 +31,7 @@ public class ImageFile extends Files {
         System.out.println("Height: " + height);
     }
     @Override
-    public void findCreateTime(String filePath) {
+    public void getCreateTime(String filePath) {
         try {
             Path file = Paths.get(filePath);
             BasicFileAttributes attr = java.nio.file.Files.readAttributes(file, BasicFileAttributes.class);

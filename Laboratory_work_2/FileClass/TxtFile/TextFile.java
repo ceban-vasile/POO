@@ -24,7 +24,7 @@ public class TextFile extends Files {
         charCount = countInfo.get(1);
         lineCount = countInfo.get(2);
         fileName = filename;
-        findCreateTime(repository + fileName);
+        getCreateTime(repository + fileName);
         System.out.println("File Name: " + fileName);
         System.out.println("Extension: txt");
         System.out.println("Created Time: " + createTime);
@@ -33,7 +33,7 @@ public class TextFile extends Files {
         System.out.println("Character Count: " + charCount);
     }
     @Override
-    public void findCreateTime(String filePath) {
+    public void getCreateTime(String filePath) {
         try {
             Path file = Paths.get(filePath);
             BasicFileAttributes attr = java.nio.file.Files.readAttributes(file, BasicFileAttributes.class);

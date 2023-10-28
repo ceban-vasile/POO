@@ -9,5 +9,5 @@ public abstract class Files {
     public FileTime createTime;
     public FileTime snapshot;
     public abstract void printInfo(String filename);
-    public abstract void findCreateTime(String filePath);
+    public abstract void getCreateTime(String filePath);
 }
