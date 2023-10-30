@@ -2,14 +2,11 @@ package Laboratory_work_2.FileClass.Thread;
 
 import Laboratory_work_2.ReadFiles.OperationFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
-import java.util.List;
 
-public class CheckChanges implements Runnable {
+public class MonitoringChanges implements Runnable {
     OperationFile file = new OperationFile();
     FileTime createTime;
 
