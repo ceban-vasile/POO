@@ -3,6 +3,7 @@ package Laboratory_work_2.FileClass.ImgFile;
 import Laboratory_work_2.FileClass.Files;
 import Laboratory_work_2.ReadFiles.OperationFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,19 +17,22 @@ public class ImageFile extends Files {
     @Override
     public void printInfo(String filename) {
         String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
-        List<Integer> countInfo;
-        countInfo = file.readImageFile(repository + filename);
-        width = countInfo.get(0);
-        height = countInfo.get(1);
-        fileName = filename;
-        extension = findExtension(repository + fileName);
-        getCreateTime(repository + fileName);
+        File f = new File(repository + filename);
+        if(f.exists()) {
+            List<Integer> countInfo;
+            countInfo = file.readImageFile(repository + filename);
+            width = countInfo.get(0);
+            height = countInfo.get(1);
+            fileName = filename;
+            extension = findExtension(repository + fileName);
+            getCreateTime(repository + fileName);
 
-        System.out.println("File Name: " + fileName);
-        System.out.println("Extension: " + extension);
-        System.out.println("Created Time: " + createTime);
-        System.out.println("Width: " + width);
-        System.out.println("Height: " + height);
+            System.out.println("File Name: " + fileName);
+            System.out.println("Extension: " + extension);
+            System.out.println("Created Time: " + createTime);
+            System.out.println("Width: " + width);
+            System.out.println("Height: " + height);
+        }else System.out.println("Such file does not exist or has not been deleted!!!");
     }
     @Override
     public void getCreateTime(String filePath) {

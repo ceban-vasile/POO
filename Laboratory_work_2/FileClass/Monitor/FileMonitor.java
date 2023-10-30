@@ -62,9 +62,6 @@ public class FileMonitor extends Files {
             if(!folder.exists())System.out.println(f + " - Delete");
         }
     }
-    public void infoStatus(){
-
-    }
     public void printInfo(String filename){
         extension = findExtension(filename);
         switch (extension){
@@ -94,7 +91,6 @@ public class FileMonitor extends Files {
 
         return fileName.substring(fileName.lastIndexOf('.') + 1);
     }
-
     public void writeCommand(){
         Scanner inputScanner = new Scanner(System.in);
         int isCommand = 1;

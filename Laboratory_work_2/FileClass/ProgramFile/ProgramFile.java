@@ -3,6 +3,7 @@ package Laboratory_work_2.FileClass.ProgramFile;
 import Laboratory_work_2.FileClass.Files;
 import Laboratory_work_2.ReadFiles.OperationFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,25 +19,28 @@ public class ProgramFile extends Files {
     @Override
     public void printInfo(String filename) {
         String repository = "C:\\Users\\Vasile\\Desktop\\test_repository\\";
-        List<Integer> countInfo = new ArrayList<>();
-        fileName = filename;
-        extension = findExtension(repository + fileName);
-        if(extension.equals("java")) {
-            countInfo = file.readJavaFile(repository + filename);
-        }else if(extension.equals("py")){
-            countInfo = file.readPythonFile(repository + filename);
-        }
-        lineCount = countInfo.get(0);
-        classCount = countInfo.get(1);
-        methodCount = countInfo.get(2);
-        getCreateTime(repository + fileName);
+        File f = new File(repository + filename);
+        if(f.exists()) {
+            List<Integer> countInfo = new ArrayList<>();
+            fileName = filename;
+            extension = findExtension(repository + fileName);
+            if (extension.equals("java")) {
+                countInfo = file.readJavaFile(repository + filename);
+            } else if (extension.equals("py")) {
+                countInfo = file.readPythonFile(repository + filename);
+            }
+            lineCount = countInfo.get(0);
+            classCount = countInfo.get(1);
+            methodCount = countInfo.get(2);
+            getCreateTime(repository + fileName);
 
-        System.out.println("File Name: " + fileName);
-        System.out.println("Extension: " + extension);
-        System.out.println("Created Time: " + createTime);
-        System.out.println("Line Count: " + lineCount);
-        System.out.println("Class Count: " + classCount);
-        System.out.println("Method Count: " + methodCount);
+            System.out.println("File Name: " + fileName);
+            System.out.println("Extension: " + extension);
+            System.out.println("Created Time: " + createTime);
+            System.out.println("Line Count: " + lineCount);
+            System.out.println("Class Count: " + classCount);
+            System.out.println("Method Count: " + methodCount);
+        }else System.out.println("Such file does not exist or has not been deleted!!!");
     }
 
     @Override
