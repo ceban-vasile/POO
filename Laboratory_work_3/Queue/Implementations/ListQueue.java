@@ -24,7 +24,7 @@ public class ListQueue<T> implements Queue<T> {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }
-        return items.remove(front++);
+        return items.remove(front);
     }
 
     @Override

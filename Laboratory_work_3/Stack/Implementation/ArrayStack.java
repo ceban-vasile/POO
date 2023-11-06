@@ -2,7 +2,6 @@ package Laboratory_work_3.Stack.Implementation;
 
 import Laboratory_work_3.Stack.Interface.Stack;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class ArrayStack<T> implements Stack<T> {
@@ -62,10 +61,5 @@ public class ArrayStack<T> implements Stack<T> {
             copyArray[k++] = arr[i];
         }
         return copyArray;
-    }
-
-    @Override
-    public String toString(){
-        return Arrays.toString(items);
     }
 }
