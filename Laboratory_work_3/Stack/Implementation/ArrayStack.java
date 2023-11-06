@@ -2,10 +2,11 @@ package Laboratory_work_3.Stack.Implementation;
 
 import Laboratory_work_3.Stack.Interface.Stack;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class ArrayStack<T> implements Stack<T> {
-    private final T[] items;
+    private T[] items;
     private int top;
 
     public ArrayStack(int capacity) {
@@ -26,7 +27,8 @@ public class ArrayStack<T> implements Stack<T> {
         if (isEmpty()) {
             throw new NoSuchElementException("Stack is empty");
         }
-        return items[top--];
+        items = removeTheElement(items, top--);
+        return items[top];
     }
 
     @Override
@@ -45,5 +47,25 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     public int size() {
         return top + 1;
+    }
+
+    public T[] removeTheElement(T[] arr, int index)
+    {
+        if (arr == null || index < 0 || index >= arr.length) return arr;
+
+        T[] copyArray = (T[]) new Object[arr.length - 1];
+
+        for (int i = 0, k = 0; i < arr.length; i++) {
+
+            if (i == index) continue;
+
+            copyArray[k++] = arr[i];
+        }
+        return copyArray;
+    }
+
+    @Override
+    public String toString(){
+        return Arrays.toString(items);
     }
 }
