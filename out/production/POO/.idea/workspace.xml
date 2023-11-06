@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b8197fcc-6509-40f2-8cb8-8a75555f46b1" name="Changes" comment="I have handled the error when the file does not exist or has been deleted." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2XGpwvQitEfNZP46Jp7ZBy8xGnZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Laboratory-work#2&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Laboratory_work_2.Main" />
+      <module name="POO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Laboratory_work_2.FileClass.Monitor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b8197fcc-6509-40f2-8cb8-8a75555f46b1" name="Changes" comment="" />
+      <created>1698265518888</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698265518888</updated>
+    </task>
+    <task id="LOCAL-00001" summary="I finished the command info.">
+      <option name="closed" value="true" />
+      <created>1698270878096</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698270878097</updated>
+    </task>
+    <task id="LOCAL-00002" summary="I set the variables public.">
+      <option name="closed" value="true" />
+      <created>1698270959933</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698270959933</updated>
+    </task>
+    <task id="LOCAL-00003" summary="We divided the readProgramFile method into readJavaFile and readPythonFile.">
+      <option name="closed" value="true" />
+      <created>1698305668040</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698305668040</updated>
+    </task>
+    <task id="LOCAL-00004" summary="I updated the functionality in readJavaFile using library regex and pattern.">
+      <option name="closed" value="true" />
+      <created>1698329368148</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698329368148</updated>
+    </task>
+    <task id="LOCAL-00005" summary="I removed the endsWithWord and startsWithWord.">
+      <option name="closed" value="true" />
+      <created>1698329586051</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698329586051</updated>
+    </task>
+    <task id="LOCAL-00006" summary="I created a findCreateTime method in FIle class for find data when files were created.">
+      <option name="closed" value="true" />
+      <created>1698344444826</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698344444829</updated>
+    </task>
+    <task id="LOCAL-00007" summary="I added the updateTime variable for save last modification time of file.">
+      <option name="closed" value="true" />
+      <created>1698344877314</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698344877314</updated>
+    </task>
+    <task id="LOCAL-00008" summary="I created a method to write in the file_info.txt nameFile and nameFile's last modification.">
+      <option name="closed" value="true" />
+      <created>1698349878611</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698349878612</updated>
+    </task>
+    <task id="LOCAL-00009" summary="I made the partial functionality to commit method.">
+      <option name="closed" value="true" />
+      <created>1698349950691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1698349950692</updated>
+    </task>
+    <task id="LOCAL-00010" summary="I changed the lastModificationTime variable name to createTime">
+      <option name="closed" value="true" />
+      <created>1698350250180</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1698350250181</updated>
+    </task>
+    <task id="LOCAL-00011" summary="I changed the writeModification method name to createSnapshot">
+      <option name="closed" value="true" />
+      <created>1698352512328</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1698352512329</updated>
+    </task>
+    <task id="LOCAL-00012" summary="I removed the updateTime variable and created snapshot variable">
+      <option name="closed" value="true" />
+      <created>1698354703043</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698354703044</updated>
+    </task>
+    <task id="LOCAL-00013" summary="I changed the functionality parsable readSnapshot method.">
+      <option name="closed" value="true" />
+      <created>1698354764572</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1698354764572</updated>
+    </task>
+    <task id="LOCAL-00014" summary="I finished to create the status command(I hope it works well).">
+      <option name="closed" value="true" />
+      <created>1698354837856</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698354837856</updated>
+    </task>
+    <task id="LOCAL-00015" summary="I remove the info method and I changed the structure menu.">
+      <option name="closed" value="true" />
+      <created>1698392404420</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698392404420</updated>
+    </task>
+    <task id="LOCAL-00016" summary="I changed the printInfo method.">
+      <option name="closed" value="true" />
+      <created>1698392450547</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1698392450547</updated>
+    </task>
+    <task id="LOCAL-00017" summary="I changed the printInfo method's structure.">
+      <option name="closed" value="true" />
+      <created>1698392553307</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1698392553307</updated>
+    </task>
+    <task id="LOCAL-00018" summary="I changed the commit method from FileMonitor to send repository's path. In writeSnapshotAndFilesName the files name also will be writer in snapshot.txt">
+      <option name="closed" value="true" />
+      <created>1698394030757</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1698394030757</updated>
+    </task>
+    <task id="LOCAL-00019" summary="I changed the readSnapshot method and added the processFilesList method.">
+      <option name="closed" value="true" />
+      <created>1698514733387</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1698514733387</updated>
+    </task>
+    <task id="LOCAL-00020" summary="I corrected the status command.">
+      <option name="closed" value="true" />
+      <created>1698514816890</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1698514816890</updated>
+    </task>
+    <task id="LOCAL-00021" summary="I implemented to find if a new file was created.">
+      <option name="closed" value="true" />
+      <created>1698516037633</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1698516037633</updated>
+    </task>
+    <task id="LOCAL-00022" summary="I have implemented to find out if a file has been deleted">
+      <option name="closed" value="true" />
+      <created>1698516545480</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1698516545480</updated>
+    </task>
+    <task id="LOCAL-00023" summary="I made the lab for grade 9.">
+      <option name="closed" value="true" />
+      <created>1698523722561</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1698523722561</updated>
+    </task>
+    <task id="LOCAL-00024" summary="I created the CheckChanges class to check changes in real time using a thread.">
+      <option name="closed" value="true" />
+      <created>1698535326267</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1698535326268</updated>
+    </task>
+    <task id="LOCAL-00025" summary="I renamed MonitoringChanges from CheckChanges.java.">
+      <option name="closed" value="true" />
+      <created>1698671861777</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1698671861777</updated>
+    </task>
+    <task id="LOCAL-00026" summary="I have handled the error when the file does not exist or has been deleted.">
+      <option name="closed" value="true" />
+      <created>1698671944763</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1698671944763</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="I set the variables public." />
+    <MESSAGE value="We divided the readProgramFile method into readJavaFile and readPythonFile." />
+    <MESSAGE value="I updated the functionality in readJavaFile using library regex and pattern." />
+    <MESSAGE value="I removed the endsWithWord and startsWithWord." />
+    <MESSAGE value="I created a findCreateTime method in FIle class for find data when files were created." />
+    <MESSAGE value="I added the updateTime variable for save last modification time of file." />
+    <MESSAGE value="I created a method to write in the file_info.txt nameFile and nameFile's last modification." />
+    <MESSAGE value="I made the partial functionality to commit method." />
+    <MESSAGE value="I changed the lastModificationTime variable name to createTime" />
+    <MESSAGE value="I changed the writeModification method name to createSnapshot" />
+    <MESSAGE value="I removed the updateTime variable and created snapshot variable" />
+    <MESSAGE value="I changed the functionality parsable readSnapshot method." />
+    <MESSAGE value="I finished to create the status command(I hope it works well)." />
+    <MESSAGE value="I remove the info method and I changed the structure menu." />
+    <MESSAGE value="I changed the printInfo method." />
+    <MESSAGE value="I changed the printInfo method's structure." />
+    <MESSAGE value="I changed the commit method from FileMonitor to send repository's path. In writeSnapshotAndFilesName the files name also will be writer in snapshot.txt" />
+    <MESSAGE value="I changed the readSnapshot method and added the processFilesList method." />
+    <MESSAGE value="I corrected the status command." />
+    <MESSAGE value="I implemented to find if a new file was created." />
+    <MESSAGE value="I have implemented to find out if a file has been deleted" />
+    <MESSAGE value="I made the lab for grade 9." />
+    <MESSAGE value="I created the CheckChanges class to check changes in real time using a thread." />
+    <MESSAGE value="I renamed MonitoringChanges from CheckChanges.java." />
+    <MESSAGE value="I have handled the error when the file does not exist or has been deleted." />
+    <option name="LAST_COMMIT_MESSAGE" value="I have handled the error when the file does not exist or has been deleted." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/POO$Main.ic" NAME="Main Coverage Results" MODIFIED="1698536942351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Laboratory_work_2.FileClass.Monitor.*</FILTER>
+    </SUITE>
+  </component>
+</project>
