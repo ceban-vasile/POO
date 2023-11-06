@@ -1,25 +1,43 @@
 package Laboratory_work_3.Stack.Implementation;
 
-import Laboratory_work_3.Stack.Interface.AbstractStack;
+import Laboratory_work_3.Stack.Interface.Stack;
 
-public class LinkedListStack implements AbstractStack {
-    private Node top;
+import java.util.NoSuchElementException;
 
-    @Override
-    public void push(String item) {
-        Node node = new Node(item);
-        node.next = top;
-        top = node;
+public class LinkedListStack<T> implements Stack<T> {
+    private Node<T> top;
+    private int size;
+
+    public LinkedListStack() {
+        top = null;
+        size = 0;
     }
 
     @Override
-    public String pop() {
-        if (!isEmpty()) {
-            String value = top.value;
-            top = top.next;
-            return value;
+    public void push(T element) {
+        Node<T> newNode = new Node<>(element);
+        newNode.next = top;
+        top = newNode;
+        size++;
+    }
+
+    @Override
+    public T pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
         }
-        throw new IllegalStateException("The stack is empty.");
+        T value = top.data;
+        top = top.next;
+        size--;
+        return value;
+    }
+
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
+        }
+        return top.data;
     }
 
     @Override
@@ -28,10 +46,7 @@ public class LinkedListStack implements AbstractStack {
     }
 
     @Override
-    public String peek() {
-        if (!isEmpty()) {
-            return top.value;
-        }
-        throw new IllegalStateException("The stack is empty.");
+    public int size() {
+        return size;
     }
 }

@@ -1,36 +1,42 @@
 package Laboratory_work_3.Stack.Implementation;
 
-import Laboratory_work_3.Stack.Interface.AbstractStack;
+import Laboratory_work_3.Stack.Interface.Stack;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
-public class ListStack implements AbstractStack {
-    private final ArrayList<String> list = new ArrayList<>();
+public class ListStack<T> implements Stack<T> {
+    private final ArrayList<T> items = new ArrayList<>();
 
     @Override
-    public void push(String item) {
-        list.add(item);
+    public void push(T item) {
+        items.add(item);
     }
 
     @Override
-    public String pop() {
-        if (!isEmpty()) {
-            return list.remove(list.size() - 1);
+    public T pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
         }
-        throw new IllegalStateException("The stack is empty.");
+        return items.remove(items.size() - 1);
+    }
+
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
+        }
+        return items.get(items.size() - 1);
     }
 
     @Override
     public boolean isEmpty() {
-        return list.isEmpty();
+        return items.isEmpty();
     }
 
     @Override
-    public String peek() {
-        if (!isEmpty()) {
-            return list.get(list.size() - 1);
-        }
-        throw new IllegalStateException("The stack is empty.");
+    public int size() {
+        return items.size();
     }
 }
 

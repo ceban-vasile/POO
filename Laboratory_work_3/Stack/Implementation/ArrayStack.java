@@ -1,27 +1,40 @@
 package Laboratory_work_3.Stack.Implementation;
 
-import Laboratory_work_3.Stack.Interface.AbstractStack;
+import Laboratory_work_3.Stack.Interface.Stack;
 
-public class ArrayStack implements AbstractStack {
-    private final String[] array = new String[100];
+import java.util.NoSuchElementException;
 
-    private int top = -1;
+public class ArrayStack<T> implements Stack<T> {
+    private final T[] items;
+    private int top;
 
-    @Override
-    public void push(String item) {
-        if (top < array.length - 1) {
-            array[++top] = item;
-        } else {
-            throw new IllegalStateException("The stack is full.");
-        }
+    public ArrayStack(int capacity) {
+        items = (T[]) new Object[capacity];
+        top = -1;
     }
 
     @Override
-    public String pop() {
-        if (!isEmpty()) {
-            return array[top--];
+    public void push(T item) {
+        if (top == items.length - 1) {
+            throw new IllegalStateException("Stack is full");
         }
-        throw new IllegalStateException("The stack is empty.");
+        items[++top] = item;
+    }
+
+    @Override
+    public T pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
+        }
+        return items[top--];
+    }
+
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
+        }
+        return items[top];
     }
 
     @Override
@@ -30,10 +43,7 @@ public class ArrayStack implements AbstractStack {
     }
 
     @Override
-    public String peek() {
-        if (!isEmpty()) {
-            return array[top];
-        }
-        throw new IllegalStateException("The stack is empty.");
+    public int size() {
+        return top + 1;
     }
 }
