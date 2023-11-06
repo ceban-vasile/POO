@@ -1,4 +1,4 @@
-package Laboratory_work_3.Stack.Implementation;
+package Laboratory_work_3.Node;
 
 public class Node<T> {
     public T data;
