@@ -1,5 +1,6 @@
 package Laboratory_work_3.Stack.Implementation;
 
+import Laboratory_work_3.Node.Node;
 import Laboratory_work_3.Stack.Interface.Stack;
 
 import java.util.NoSuchElementException;
@@ -14,8 +15,8 @@ public class LinkedListStack<T> implements Stack<T> {
     }
 
     @Override
-    public void push(T element) {
-        Node<T> newNode = new Node<>(element);
+    public void push(T item) {
+        Node<T> newNode = new Node<>(item);
         newNode.next = top;
         top = newNode;
         size++;
