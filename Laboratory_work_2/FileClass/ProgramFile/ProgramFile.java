@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProgramFile extends Files {
-    public int lineCount;
-    public int classCount;
-    public int methodCount;
+    protected int lineCount;
+    protected int classCount;
+    protected int methodCount;
     OperationFile file = new OperationFile();
     @Override
     public void printInfo(String filename) {
@@ -44,7 +44,7 @@ public class ProgramFile extends Files {
     }
 
     @Override
-    public void getCreateTime(String filePath) {
+    protected void getCreateTime(String filePath) {
         try {
             Path file = Paths.get(filePath);
             BasicFileAttributes attr = java.nio.file.Files.readAttributes(file, BasicFileAttributes.class);

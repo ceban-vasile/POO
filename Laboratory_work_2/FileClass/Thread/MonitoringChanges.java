@@ -31,6 +31,7 @@ public class MonitoringChanges implements Runnable {
     }
     @Override
     public void run() {
+        try {
         while (true) {
             try {
                 checkChanges();
@@ -42,6 +43,9 @@ public class MonitoringChanges implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+        } catch (RuntimeException e) {
+            System.out.println("Thread was interrupted!");
         }
     }
 }

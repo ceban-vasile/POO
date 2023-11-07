@@ -9,5 +9,6 @@ public class Main {
         thread.start();
         FileMonitor command = new FileMonitor();
         command.writeCommand();
+        thread.interrupt();
     }
 }

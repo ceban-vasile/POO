@@ -11,9 +11,9 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 
 public class TextFile extends Files {
-    public int lineCount;
-    public int wordCount;
-    public int charCount;
+    protected int lineCount;
+    protected int wordCount;
+    protected int charCount;
     OperationFile file = new OperationFile();
 
     @Override
@@ -37,7 +37,7 @@ public class TextFile extends Files {
         }else System.out.println("Such file does not exist or has not been deleted!!!");
     }
     @Override
-    public void getCreateTime(String filePath) {
+    protected void getCreateTime(String filePath) {
         try {
             Path file = Paths.get(filePath);
             BasicFileAttributes attr = java.nio.file.Files.readAttributes(file, BasicFileAttributes.class);

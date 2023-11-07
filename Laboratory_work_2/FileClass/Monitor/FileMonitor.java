@@ -106,8 +106,10 @@ public class FileMonitor extends Files {
                 case "status" -> {status();}
                 case "help" -> {help();}
                 case "exit" -> {isCommand = 0;}
-                default -> {System.out.println("Is not valid command!!! \n" +
-                        "For more information, write help in the console");}
+                default -> {
+                    System.out.println("Is not valid command!!! \n" +
+                        "For more information, write help in the console");
+                }
             }
         }
         inputScanner.close();

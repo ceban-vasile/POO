@@ -11,8 +11,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 
 public class ImageFile extends Files {
-    public int width;
-    public int height;
+    protected int width;
+    protected int height;
     OperationFile file = new OperationFile();
     @Override
     public void printInfo(String filename) {
@@ -35,7 +35,7 @@ public class ImageFile extends Files {
         }else System.out.println("Such file does not exist or has not been deleted!!!");
     }
     @Override
-    public void getCreateTime(String filePath) {
+    protected void getCreateTime(String filePath) {
         try {
             Path file = Paths.get(filePath);
             BasicFileAttributes attr = java.nio.file.Files.readAttributes(file, BasicFileAttributes.class);
