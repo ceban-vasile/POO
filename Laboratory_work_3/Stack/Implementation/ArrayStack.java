@@ -16,26 +16,27 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     public void push(T item) {
         if (top == items.length - 1) {
-            throw new IllegalStateException("Stack is full");
-        }
-        items[++top] = item;
+            System.out.println("Stack is full");
+        }else items[++top] = item;
     }
 
     @Override
     public T pop() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
+            System.out.println("Stack is empty");
+        }else {
+            items = removeTheElement(items, top--);
+            return items[top];
         }
-        items = removeTheElement(items, top--);
-        return items[top];
+        return null;
     }
 
     @Override
     public T peek() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
-        }
-        return items[top];
+            System.out.println("Stack is empty");
+        }else return items[top];
+        return null;
     }
 
     @Override

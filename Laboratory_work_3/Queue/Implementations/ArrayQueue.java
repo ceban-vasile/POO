@@ -20,30 +20,33 @@ public class ArrayQueue<T> implements Queue<T> {
     @Override
     public void enqueue(T element) {
         if (size == items.length) {
-            throw new IllegalStateException("Queue is full");
+            System.out.println("Queue is full");
+        }else {
+            rear = (rear + 1) % items.length;
+            items[rear] = element;
+            size++;
         }
-        rear = (rear + 1) % items.length;
-        items[rear] = element;
-        size++;
     }
 
     @Override
     public T dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty");
+            System.out.print("Queue is ");
+        }else {
+            T value = items[front];
+            front = (front + 1) % items.length;
+            size--;
+            return value;
         }
-        T value = items[front];
-        front = (front + 1) % items.length;
-        size--;
-        return value;
+        return null;
     }
 
     @Override
     public T peek() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty");
-        }
-        return items[front];
+            System.out.print("Queue is ");
+        }else return items[front];
+        return null;
     }
 
     @Override

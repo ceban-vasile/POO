@@ -16,17 +16,17 @@ public class ListStack<T> implements Stack<T> {
     @Override
     public T pop() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
-        }
-        return items.remove(items.size() - 1);
+            System.out.println("Stack is empty");
+        }else return items.remove(items.size() - 1);
+        return null;
     }
 
     @Override
     public T peek() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
-        }
-        return items.get(items.size() - 1);
+            System.out.println("Stack is empty");
+        }else return items.get(items.size() - 1);
+        return null;
     }
 
     @Override

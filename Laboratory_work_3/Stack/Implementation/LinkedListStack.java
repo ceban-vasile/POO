@@ -25,20 +25,22 @@ public class LinkedListStack<T> implements Stack<T> {
     @Override
     public T pop() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
+            System.out.println("Stack is empty");
+        }else {
+            T value = top.data;
+            top = top.next;
+            size--;
+            return value;
         }
-        T value = top.data;
-        top = top.next;
-        size--;
-        return value;
+        return null;
     }
 
     @Override
     public T peek() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
-        }
-        return top.data;
+            System.out.println("Stack is empty");
+        }else return top.data;
+        return null;
     }
 
     @Override

@@ -32,23 +32,25 @@ public class LinkedListQueue<T> implements Queue<T> {
     @Override
     public T dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty");
+            System.out.print("Queue is ");
+        }else {
+            T value = front.data;
+            front = front.next;
+            if (front == null) {
+                rear = null;
+            }
+            size--;
+            return value;
         }
-        T value = front.data;
-        front = front.next;
-        if (front == null) {
-            rear = null;
-        }
-        size--;
-        return value;
+        return null;
     }
 
     @Override
     public T peek() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty");
-        }
-        return front.data;
+            System.out.print("Queue is ");
+        }else return front.data;
+        return null;
     }
 
     @Override

@@ -22,17 +22,17 @@ public class ListQueue<T> implements Queue<T> {
     @Override
     public T dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty");
-        }
-        return items.remove(front);
+            System.out.print("Queue is ");
+        } else return items.remove(front);
+        return null;
     }
 
     @Override
     public T peek() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty");
-        }
-        return items.get(front);
+            System.out.print("Queue is ");
+        } else return items.get(front);
+        return null;
     }
 
     @Override
